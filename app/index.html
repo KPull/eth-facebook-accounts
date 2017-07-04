@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ethereum Facebook Accounts DApp</title>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css"/>
+
+    <script type="application/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="application/javascript" src="node_modules/web3/dist/web3.min.js"></script>
+
+    <script type="application/javascript" src="scripts/main.js"></script>
+    <script type="application/javascript" src="scripts/addresses.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Ethereum Facebook Accounts</h1>
+            <p>
+                Link your Facebook account/page to an Ethereum address. Once your accounts are linked, other smart contracts will
+                be able to verify that you indeed own the Facebook account which you claim to own.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <h2>Ethereum Addresses</h2>
+            <div id="eth-addresses-list" class="list-group center-block" role="group">
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <h2>Facebook Accounts/Pages</h2>
+            <div id="eth-facebook-accounts-list" class="list-group center-block" role="group">
+                <button type="button" class="list-group-item">Page 1</button>
+                <button type="button" class="list-group-item">Page 2</button>
+                <button type="button" class="list-group-item">Page 3</button>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <h2>Link</h2>
+            <div>
+                Linking a Facebook account with an Ethereum address with this smart contract requires a fee of <em>599 Wei</em>.
+                Once you have chosen which address and Facebook account you want to link together, click on the <em>Link</em>
+                button below.
+            </div>
+            <br/>
+            <div>
+                <button class="btn btn-info" style="width: 100%">Link for 599 wei</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Verify Account Ownership</h2>
+            <p>
+                You can also use this DApp to check whether the specified Facebook account/page is owned by a particular
+                Ethereum address.
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

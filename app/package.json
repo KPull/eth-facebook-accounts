@@ -1,0 +1,14 @@
+{
+  "name": "eth-social-tokens",
+  "version": "1.0.0",
+  "description": "Get social tokens which represent your ownership of a social account.",
+  "main": "index.js",
+  "repository": "https://github.com/KPull/eth-facebook-accounts",
+  "author": "Kyle Pullicino",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1",
+    "web3": "^0.19.1"
+  }
+}
