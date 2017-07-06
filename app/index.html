@@ -10,10 +10,10 @@
     <script type="application/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
     <script type="application/javascript" src="node_modules/web3/dist/web3.min.js"></script>
 
-    <script type="application/javascript" src="scripts/fb.js"></script>
-    <script type="application/javascript" src="scripts/ui.js"></script>
     <script type="application/javascript" src="scripts/main.js"></script>
-    <script type="application/javascript" src="scripts/addresses.js"></script>
+    <script type="application/javascript" src="scripts/fb.js"></script>
+    <script type="application/javascript" src="scripts/ethereum.js"></script>
+    <script type="application/javascript" src="scripts/ui.js"></script>
 </head>
 <body>
 <div class="container">
@@ -36,8 +36,9 @@
         <div class="col-lg-4">
             <h2>Facebook Accounts/Pages</h2>
             <button id="eth-facebook-login-btn" class="btn btn-default center-block">Login with Facebook</button>
+            <button id="eth-facebook-logout-btn" class="btn btn-default center-block">Logout from Facebook</button>
+            <br/>
             <div id="eth-facebook-accounts-list" class="list-group center-block" role="group">
-                <button type="button" class="list-group-item">Page 1</button>
             </div>
         </div>
         <div class="col-lg-4">
@@ -51,7 +52,7 @@
             </div>
             <br/>
             <div>
-                <button class="btn btn-info" style="width: 100%">Link for 599 wei</button>
+                <button id="link-accounts-btn" class="btn btn-info" disabled="disabled" style="width: 100%">Link for 599 wei</button>
             </div>
         </div>
     </div>

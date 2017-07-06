@@ -1,5 +1,3 @@
-require('express');
-
 module.exports = {
   networks: {
     development: {

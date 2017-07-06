@@ -46,7 +46,7 @@ FacebookAccounts = function() {
 
     var initFB = function () {
         FB.init({
-            appId: '',
+            appId: '202007806991308',
             version: 'v2.7'
         });
     };
@@ -115,6 +115,18 @@ FacebookAccounts = function() {
         });
     };
 
+    var asyncPerformLogout = function () {
+        return new Promise(function (resolve, reject) {
+            FB.logout(function (response) {
+                if (!response || response.error) {
+                    reject();
+                } else {
+                    resolve(response);
+                }
+            });
+        });
+    };
+
     var onFBLogin = function (response) {
         loggedIn(response);
         asyncGetAllAccounts();
@@ -151,7 +163,8 @@ FacebookAccounts = function() {
     return {
         accounts: accounts,
         loggedIn: loggedIn,
-        login: asyncPerformLogin
+        login: asyncPerformLogin,
+        logout: asyncPerformLogout
     };
 
 }();
