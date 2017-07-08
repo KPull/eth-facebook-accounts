@@ -5,9 +5,17 @@ UI = function () {
         ethereumAccount: null
     };
 
+    var makeClaim = function() {
+        Ethereum.asyncMakeClaim(selections.ethereumAccount, selections.facebookAccount).then(function() {
+            alert("done");
+        });
+    };
+
     var registerHandlers = function () {
         $('#eth-facebook-login-btn').on('click', FacebookAccounts.login);
         $('#eth-facebook-logout-btn').on('click', FacebookAccounts.logout);
+        $('#link-accounts-btn').on('click', makeClaim);
+
     };
 
     var updateFacebookSelectionVisuals = function () {
