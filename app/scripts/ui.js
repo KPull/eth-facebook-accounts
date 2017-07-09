@@ -5,10 +5,12 @@ UI = function () {
         ethereumAccount: null
     };
 
-    var makeClaim = function() {
-        Ethereum.asyncMakeClaim(selections.ethereumAccount, selections.facebookAccount).then(function() {
-            alert("done");
-        });
+    var makeClaim = function () {
+        Promise.all([Ethereum.asyncMakeClaim(selections.ethereumAccount, selections.facebookAccount),
+            Api.asyncSendClaim(FacebookAccounts.accessToken(), selections.facebookAccount, selections.ethereumAccount)])
+            .then(function () {
+                alert("done");
+            });
     };
 
     var registerHandlers = function () {
@@ -29,7 +31,7 @@ UI = function () {
         }
     };
 
-    var updateEthereumSelectionVisuals = function() {
+    var updateEthereumSelectionVisuals = function () {
         $('button.eth-address-btn.active').removeClass('active');
         $('button.eth-address-btn[data-eth-address="' + selections.ethereumAccount + '"]').addClass('active');
     };
@@ -42,12 +44,12 @@ UI = function () {
         }
     };
 
-    var onClickFacebookAccount = function() {
+    var onClickFacebookAccount = function () {
         selections.facebookAccount = $(this).attr("data-fb-account");
         updateFacebookSelectionVisuals();
     };
 
-    var onClickEthereumAccount = function() {
+    var onClickEthereumAccount = function () {
         selections.ethereumAccount = $(this).attr("data-eth-address");
         updateEthereumSelectionVisuals();
     };
@@ -76,12 +78,12 @@ UI = function () {
             retainSelection('facebookAccount', accounts);
             updateFacebookSelectionVisuals();
         });
-        Ethereum.accounts(function(accounts) {
+        Ethereum.accounts(function (accounts) {
             var list = $('#eth-addresses-list');
             list.empty();
 
             var buttons = accounts.map(function (address) {
-                var button = $('<button type="button" class="eth-address-btn list-group-item" data-eth-address="' + address +'">' + address + '</button>');
+                var button = $('<button type="button" class="eth-address-btn list-group-item" data-eth-address="' + address + '">' + address + '</button>');
                 button.on('click', onClickEthereumAccount);
                 return button;
             });

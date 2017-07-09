@@ -36,6 +36,24 @@ FacebookAccounts = function() {
         }
     };
 
+    var _accessToken = null;
+    var _accessToken_handler = [];
+    var accessToken = function() {
+        if (arguments.length == 0) {
+            return _accessToken;
+        } else if (typeof(arguments[0]) === 'function') {
+            _accessToken_handler.push(arguments[0]);
+            arguments[0](_accessToken);
+        } else {
+            var oldValue = _accessToken;
+            var newValue = arguments[0];
+            _accessToken = arguments[0];
+            _accessToken_handler.forEach(function (handler) {
+                handler(newValue, oldValue);
+            });
+        }
+    };
+
     var asyncDownloadFbSdk = function () {
         return new Promise(function (resolve, reject) {
             $.getScript('//connect.facebook.net/en_US/sdk.js')
@@ -107,6 +125,7 @@ FacebookAccounts = function() {
                 if (!response || response.error) {
                     reject();
                 } else {
+                    accessToken(response.authResponse.accessToken);
                     resolve(response);
                 }
             }, {
@@ -144,6 +163,7 @@ FacebookAccounts = function() {
                     reject();
                 } else {
                     loggedIn(response);
+                    accessToken(response.authResponse.accessToken);
                     resolve(response);
                 }
             });
@@ -163,6 +183,7 @@ FacebookAccounts = function() {
     return {
         accounts: accounts,
         loggedIn: loggedIn,
+        accessToken: accessToken,
         login: asyncPerformLogin,
         logout: asyncPerformLogout
     };
